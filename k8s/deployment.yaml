@@ -12,9 +12,11 @@ spec:
       labels:
         app: pod-vis
     spec:
+      serviceAccountName: pod-vis-user
       containers:
         - name: pod-vis
           image: osimono/pod-vis:0.1
+          imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service

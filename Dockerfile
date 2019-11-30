@@ -13,9 +13,6 @@ COPY . .
 
 RUN gofmt -l ./
 RUN test -z $(gofmt -l ./)
-RUN go vet -v github.com/osimono/pod-vis/internal/...
-RUN go test -coverprofile=coverage.out github.com/osimono/pod-vis/internal/...
-RUN go tool cover -func=coverage.out
 
 ARG commit_sha_arg
 ARG timestamp_arg
