@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-vis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pod-vis
+  template:
+    metadata:
+      labels:
+        app: pod-vis
+    spec:
+      containers:
+        - name: pod-vis
+          image: osimono/pod-vis:0.1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pod-vis-svc
+spec:
+  type: NodePort
+  selector:
+    app: pod-vis
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30001
